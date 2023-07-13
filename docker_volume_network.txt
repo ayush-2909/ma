@@ -1,0 +1,67 @@
+Practical No. 5:
+Working with docker volume & networks
+Working with docker Volumes and Networks.
+Perform Following Inside Play-With-Docker
+Steps:
+1) Pull nginx image into docker
+Command: docker pull nginx
+Output
+2) Now run the pulled image in Conatiner named “webApp”
+Command: docker run -it --name=webApp -d -p 80:80 nginx
+Output
+3) Click on port 80 to check output (it shows welcome page)
+Output
+4) We make changes into “index.html” file inside /usr/share/nginx/html folder
+Commands:
+docker exec -it webApp bash //this command to execute bash shell
+cd/usr/share/nginx/html //to go inside html folder
+echo "Hello KB">index.html //to change content of index.html file
+5) Type exit to return to docker prompt and check process status using ps option
+Commands :Exit Docker ps
+6) Now refresh on port 80 output (you should get modified output)
+Output
+7) Now stop running container named “webApp” .
+Command: docker stop webApp
+8) Start nginx in new container named as“webApp1”.
+Command: docker run -it --name=webApp1 -d -p 80:80 nginx
+9)Now Click on port 80 (you will see the welcome page again)
+Output
+9) To solve this issue we create new volume.
+Command: docker volume create MyVolume
+10) Check volume is created
+Command: docker volume ls
+11) Check details of volume
+Command: docker volume inspect MyVolume
+12) Mount this volume to nginx new container named “webApp99”
+Command: docker run -d --name=webApp99 –mount source=MyVolume,
+destination=/usr/share/nginx/html -p 81:80 nginx
+Output
+13) Now keep on doing “ls” and “cd” to go inside_data folder of our volume
+“MyVolume”
+Commands : ls/ cd/var/lib/docker
+ls
+Output
+]
+Commands: cd volumes
+ls
+cd MyVolume
+ls
+cd_data
+ls
+Output
+14) Modify contents of index.html file with “from My Volume hello KB”
+Command: echo “from My Volume hello KB”> index.html
+15) Now refresh port 80(to get modified output)
+Output
+16) Now stop this running container named “webApp4”
+Command: docker stop webApp99
+Output
+17) Now run nginx in new container named“webApp10”
+Command: docker run -d --name=webApp10 –mount
+source=MyVolume,destination=/usr/share/nginx/html -p 81:80 nginx
+Output
+1) Click on port 80 and refresh the page you should get edited file as output. We can load the page again
+localhost:80 and still see the html file that we edited in the volume. So, with the help of volumes ,we can
+easilyaccess the data even we stop the container and it’s very easy to access data and import the data to
+anywhere.
+Output

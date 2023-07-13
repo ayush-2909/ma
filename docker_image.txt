@@ -1,0 +1,30 @@
+Practical No.4:
+Working with Docker, Docker images and containers
+Overview of Docker
+Docker is an open platform for developing ,shipping ,and running applications. Docker enables you to separate
+your applications from your infrastructure so you can deliver software quickly. With Docker , you can manage
+your infrastructure in the same ways you manage your applications .By taking advantage of Docker’s
+methodologies for shipping , testing, and deploying code quickly ,you can significantly reduce the delay
+between writing code and running it in production
+1. Create docker hub account (signup)
+2. Login to https://labs.play-with-docker.com/
+
+Click on start
+3: Create new instance
+4.Perform following
+Method1 :To pull and push images using docker
+Command: to check docker version docker –version
+Command: to pull ready made image docker pull rocker/verse
+Command: to check images in docker docker images
+Output
+
+Now Login to docker hub and create
+repository
+Click on Create button Now check repository created
+Command: to login to your docker account docker login–username=anjali22001
+Password:
+Output
+Command :to tag image docker tag 7291950d643e anjali22001/repos1:firsttry
+Output
+Command:to push image to docker hub account docker push anjali22001/repos1:firsttry
+Output
