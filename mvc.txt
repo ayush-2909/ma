@@ -38,5 +38,45 @@ Output
 5. Create one notepad and save the file name as StockQuote.cs and make some changes.Save that file into
 Models folder. Make some changes in Index.cshtml file. This file is being located at-
 (“D:\MyMVC\Views\Home”
-6. Again go to controllers folder and modify Home Controller.cd file to match following
-Output
+code Stock quote.cs:
+using System;
+namespace MyMVC.Models
+{
+	public class StockQuote
+	{
+		public string Symbol{get;set;}
+		public int Price{get;set;}
+	}
+}
+
+code index.cshtml:
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+Symbol: @Model.Symbol <br/>
+Price: $@Model.Price <br/>
+</div>
+
+6. Again go to controllers folder and modify Home Controller.cs file to match following
+code:
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using MyMVC.Models;
+namespace MyMVC.Controllers
+{
+	public class HomeController : Controller
+	{
+		public async Task<IActionResult>Index()
+		{
+			var model=new StockQuote{Symbol="HELLO",Price=3200};
+			return View(model);
+		}
+	}
+}
